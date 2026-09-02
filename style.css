@@ -76,6 +76,7 @@ body::after {
     width: 95%;
     max-width: 1100px;
     align-items: center;
+    animation: dashboard-enter 0.8s ease-out forwards;
 }
 
 .ticket-container {
@@ -444,4 +445,15 @@ body.turbulence-overlay #red-flash-overlay {
 @keyframes red-flash {
     from { background-color: var(--midnight); }
     to { background-color: #3b0918; }
+}
+
+@keyframes dashboard-enter {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.98); /* Starts slightly lower and smaller */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1); /* Settles into its normal position */
+    }
 }
