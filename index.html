@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Turbulence Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="flight-dashboard" class="dashboard">
+        <header>
+            <h1>FLIGHT MANIFEST // INDONESIA BOUND</h1>
+            <div class="status-bar">
+                <span id="lives-display">Lives: ❤️❤️❤️</span>
+                <span id="questions-display">Questions Left: 6</span>
+            </div>
+        </header>
+
+        <div class="main-screen">
+            <div id="passenger-grid" class="grid">
+                <!-- Passenger names here via JS -->
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="turbulence-btn" class="danger-btn">WARNING: INITIATE TURBULENCE</button>
+        </div>
+    </div>
+
+    <!-- Emergency Selection Overlay -->
+    <div id="emergency-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2 class="flashing-text">EMERGENCY PROTOCOL ACTIVATED</h2>
+            <p>Passenger called to save the flight:</p>
+            <h1 id="selected-passenger">SYSTEM SELECTING...</h1>
+            <div class="modal-actions">
+                <button id="correct-btn" class="success-btn">Answer Correct (Saved!)</button>
+                <button id="wrong-btn" class="danger-btn">Answer Wrong (-1 Life)</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
