@@ -84,20 +84,25 @@ body::after {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 50;
+    z-index: 50; 
     background: transparent;
     transition: opacity 0.5s, transform 0.5s;
 }
 
 .ticket {
     background: var(--white);
-    width: 600px;
+    width: 700px; 
     border-radius: 16px;
     box-shadow: 0 20px 40px rgba(0, 48, 135, 0.3);
-    display: flex;
+    
+    /* THE MAGIC FIX: CSS Grid */
+    display: grid; 
+    grid-template-columns: 1fr 140px; 
+    grid-template-rows: auto 1fr; 
+    
     overflow: hidden;
     color: var(--midnight);
-    animation: float 4s ease-in-out infinite;
+    animation: float 4s ease-in-out infinite; 
 }
 
 @keyframes float {
@@ -106,24 +111,25 @@ body::after {
     100% { transform: translateY(0px); }
 }
 
-.ticket-header, .ticket-body {
-    padding: 20px;
-}
-
 .ticket-header {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
     background: var(--ocean);
     color: var(--white);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px dashed rgba(255,255,255,0.3);
+    padding: 15px 30px;
 }
 
-.ticket-header h2 { margin: 0; color: var(--sun); }
+.ticket-header h2 { margin: 0; color: var(--sun); font-weight: 900; }
 .ticket-header p { margin: 0; font-weight: bold; }
 
+
 .ticket-body {
-    flex: 1;
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -133,11 +139,11 @@ body::after {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .airport { text-align: center; }
-.airport h1 { font-size: 3.5rem; color: var(--ocean); margin: 0; }
+.airport h1 { font-size: 4rem; color: var(--ocean); margin: 0; letter-spacing: -2px; }
 .airport span { font-weight: 800; color: #8d99ae; text-transform: uppercase; }
 
 .plane-icon { font-size: 2.5rem; color: var(--sun); }
@@ -148,16 +154,17 @@ body::after {
 }
 
 .ticket-details div { display: flex; flex-direction: column; }
-.ticket-details small { color: #8d99ae; font-weight: 800; font-size: 0.8rem; }
-.ticket-details strong { font-size: 1.2rem; color: var(--midnight); }
-
+.ticket-details small { color: #8d99ae; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; }
+.ticket-details strong { font-size: 1.2rem; color: var(--midnight); font-weight: 900;}
 
 .ticket-stub {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    
     background: var(--sun);
     color: var(--midnight);
-    width: 150px;
     border: none;
-    border-left: 3px dashed var(--ocean); 
+    border-left: 4px dashed var(--ocean);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -165,11 +172,12 @@ body::after {
     cursor: pointer;
     border-radius: 0; 
     transition: background 0.3s;
+    padding: 15px;
 }
 
 .ticket-stub:hover {
-    background: #ffbe28;
-    transform: none;
+    background: #ffbe28; 
+    transform: none; 
 }
 
 .barcode {
@@ -177,13 +185,14 @@ body::after {
     font-size: 1.5rem;
     font-weight: bold;
     transform: rotate(90deg);
-    margin-bottom: 40px;
     letter-spacing: 2px;
+    margin-bottom: 40px; 
 }
 
 .ticket-stub span {
     font-size: 1.2rem;
     font-weight: 900;
+    line-height: 1.2;
 }
 
 .ticket-scanned {
