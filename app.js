@@ -64,9 +64,9 @@ class FlightGame {
     bindEvents() {
         document.getElementById('start-flight-btn').addEventListener('click', () => {
             this.preFlight.classList.add('hidden');
-            this.mainGame.classList.remove('hidden'); // Show the main game layout instead of just dashboard
+            this.mainGame.classList.remove('hidden'); 
             this.audioBGM.volume = 0.4;
-            this.audioBGM.play(); // Starts the ambient airplane noise
+            this.audioBGM.play(); 
         });
 
         this.turbBtn.addEventListener('click', () => this.triggerTurbulence());
@@ -100,26 +100,19 @@ class FlightGame {
 
         setTimeout(() => {
             clearInterval(cycle);
+
             document.getElementById('flight-dashboard').classList.remove('turbulence-active');
             document.body.classList.remove('turbulence-overlay');
+            
+            this.audioTurbulence.pause();
+            this.audioBGM.play();
             
             const chosen = this.passengers[Math.floor(Math.random() * this.passengers.length)];
             document.querySelectorAll('.seat').forEach(s => s.classList.remove('selected'));
             document.getElementById(`seat-${chosen}`).classList.add('selected');
             
-            this.selectedDisplay.innerText = chosen; // Display chosen name directly in the side panel
+            this.selectedDisplay.innerText = chosen; 
         }, 4800); 
-    }
-
-    voidQuestion() {
-        this.statusEmergency.classList.add('hidden');
-        this.statusIdle.classList.remove('hidden');
-        this.turbBtn.disabled = false;
-            
-        this.audioTurbulence.pause();
-        this.audioBGM.play(); 
-
-        document.querySelectorAll('.seat').forEach(s => s.classList.remove('selected'));
     }
 
     resolveQuestion(isCorrect) {
@@ -154,7 +147,14 @@ class FlightGame {
             setTimeout(() => alert("CLEAR SKIES AHEAD! We have safely landed."), 500);
         }
     }
-}
+
+    voidQuestion() {
+        this.statusEmergency.classList.add('hidden');
+        this.statusIdle.classList.remove('hidden');
+        this.turbBtn.disabled = false;
+
+        document.querySelectorAll('.seat').forEach(s => s.classList.remove('selected'));
+    }
 
 const classRoster = [
     "Aicert", "Aldred", "Kate", "Czynon", "Vincent",
