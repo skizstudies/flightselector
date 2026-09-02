@@ -1,3 +1,12 @@
+const recapQuestions = [
+    { q: "What is Indonesia's GDP, making it the largest economy in SEA?", opts: ["A) $512 billion", "B) $1.4 trillion", "C) $2.5 trillion", "D) $800 billion"] },
+    { q: "What specific mining industry caused a toxic waste landslide in Morowali in 2026?", opts: ["A) Coal Mining", "B) Copper Mining", "C) Nickel Mining", "D) Gold Mining"] },
+    { q: "To improve education, what is Indonesia building nationwide by 2026?", opts: ["A) 500 Integrated Schools", "B) 1,000 Free Universities", "C) A National Digital Library", "D) 200 Tech Hubs"] },
+    { q: "Which Indonesian sector recorded over 32,000 layoffs in the first half of 2026?", opts: ["A) Agriculture", "B) Tourism", "C) Manufacturing", "D) IT and BPO"] },
+    { q: "Why do both the Philippines and Indonesia face frequent volcanic eruptions and earthquakes?", opts: ["A) Near the equator", "B) Pacific Ring of Fire", "C) Groundwater extraction", "D) Carbon emissions"] },
+    { q: "What is the 10-year foresight study Indonesia launched to map tech and human rights?", opts: ["A) Vision 2036", "B) Tech for All", "C) Ecosoc Rights Outlook 2036", "D) Digital Integration Act"] }
+];
+
 class FlightGame {
     constructor(passengers) {
         this.passengers = passengers;

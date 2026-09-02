@@ -93,17 +93,27 @@
 
             <!-- Emergency / Question State -->
             <div id="status-emergency" class="panel-content hidden">
-                <h2 class="flashing-text">EMERGENCY PROTOCOL</h2>
-                <p>Passenger called to save the flight:</p>
+                <h2 class="flashing-text">PASSENGER SELECTED</h2>
+                <h1 id="selected-passenger" style="color: var(--midnight);">SYSTEM SELECTING...</h1>
                 
-                <h1 id="selected-passenger">SYSTEM SELECTING...</h1>
+                <!-- The Airplane Window -->
+                <div class="airplane-window">
+                    <div id="window-shade" class="shade">
+                        <div class="shade-handle"></div>
+                    </div>
+                    <div class="window-glass">
+                        <p id="question-text">Question will appear here...</p>
+                        <div id="question-options" class="options-grid">
+                            <!-- Options injected by JS -->
+                        </div>
+                    </div>
+                </div>
                 
                 <div class="modal-actions">
                     <div class="main-buttons">
                         <button id="correct-btn" class="success-btn">Correct (Saved!)</button>
                         <button id="wrong-btn" class="danger-btn">Incorrect (-1)</button>
                     </div>
-                    
                     <button id="void-btn" class="void-btn">Void</button>
                 </div>
             </div>

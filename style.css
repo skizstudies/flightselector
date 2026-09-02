@@ -430,6 +430,69 @@ body.turbulence-overlay #red-flash-overlay {
     to { opacity: 0.5; } 
 }
 
+.airplane-window {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    background: linear-gradient(to bottom, #87CEEB, #e0f6ff); 
+    border: 16px solid var(--white);
+    border-radius: 60px 60px 40px 40px; 
+    box-shadow: inset 0 10px 20px rgba(0,0,0,0.2), 0 10px 20px rgba(0,48,135,0.2);
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.window-glass {
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--midnight);
+}
+
+#question-text {
+    font-weight: 900;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.shade {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: #d3d9e0; 
+    box-shadow: inset 0 -5px 15px rgba(0,0,0,0.1);
+    z-index: 5;
+    transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1); 
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.shade-handle {
+    width: 50px;
+    height: 8px;
+    background: #aeb6c1;
+    border-radius: 10px;
+}
+
+.shade.open {
+    transform: translateY(-90%);
+}
+
 /* Animations */
 .turbulence-active { animation: shake 0.4s infinite; }
 .turbulence-overlay { animation: red-flash 0.8s infinite alternate; }
