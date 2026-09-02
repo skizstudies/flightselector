@@ -111,6 +111,17 @@ class FlightGame {
         }, 4000); // 4 seconds of turbulence buildup
     }
 
+    voidQuestion() {
+        this.statusEmergency.classList.add('hidden');
+        this.statusIdle.classList.remove('hidden');
+        this.turbBtn.disabled = false;
+            
+        this.audioTurbulence.pause();
+        this.audioBGM.play(); 
+
+        document.querySelectorAll('.seat').forEach(s => s.classList.remove('selected'));
+    }
+
     resolveQuestion(isCorrect) {
         this.statusEmergency.classList.add('hidden');
         this.statusIdle.classList.remove('hidden');
