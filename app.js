@@ -108,7 +108,7 @@ class FlightGame {
             document.getElementById(`seat-${chosen}`).classList.add('selected');
             
             this.selectedDisplay.innerText = chosen; // Display chosen name directly in the side panel
-        }, 4000); // 4 seconds of turbulence buildup
+        }, 5000); // 4 seconds of turbulence buildup
     }
 
     voidQuestion() {
