@@ -178,9 +178,29 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
 .modal-actions {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.main-buttons {
+    display: flex;
     gap: 15px;
     justify-content: center;
-    margin-top: 25px;
+}
+
+.void-btn { 
+    background: #4a5568; 
+    color: var(--white); 
+    padding: 8px 16px !important; 
+    font-size: 0.85rem !important; 
+    border-radius: 6px !important; 
+    opacity: 0.8;
+}
+
+.void-btn:hover {
+    opacity: 1;
 }
 
 .flashing-text { color: var(--sun); animation: blink 1s infinite; }
