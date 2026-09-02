@@ -17,38 +17,54 @@
         <button id="start-flight-btn" class="success-btn">BOARD FLIGHT (Enable Audio)</button>
     </div>
 
-    <div id="flight-dashboard" class="dashboard hidden">
-        <header>
-            <h1>Flight 10426 → IDN</h1>
-            <div class="status-bar">
-                <span id="lives-display">Lives: ❤️❤️❤️</span>
-                <span id="questions-display">Questions Left: 6</span>
-            </div>
-        </header>
+    <!-- Main Game UI -->
+    <div id="main-game" class="game-layout hidden">
+        
+        <!-- Left Column: Airplane Dashboard -->
+        <div id="flight-dashboard" class="dashboard">
+            <header>
+                <h1>Flight 10426 → IDN</h1>
+                <div class="status-bar">
+                    <span id="lives-display">❤️❤️❤️</span>
+                    <span id="questions-display">Questions Left: 6</span>
+                </div>
+            </header>
 
-        <!-- Airplane Cabin Layout -->
-        <div class="airplane-body">
-            <div class="cockpit-door">COCKPIT</div>
-            <div id="cabin-rows" class="cabin">
-                <!-- Seats here via JS -->
+            <div class="airplane-body">
+                <div class="cockpit-door">COCKPIT</div>
+                <div id="cabin-rows" class="cabin">
+                    <!-- Seats here via JS -->
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="turbulence-btn" class="danger-btn">WARNING: INITIATE TURBULENCE</button>
             </div>
         </div>
 
-        <div class="controls">
-            <button id="turbulence-btn" class="danger-btn">WARNING: INITIATE TURBULENCE</button>
-        </div>
-    </div>
-
-    <!-- Emergency Selection Overlay -->
-    <div id="emergency-modal" class="modal hidden">
-        <div class="modal-content">
-            <h2 class="flashing-text">EMERGENCY PROTOCOL ACTIVATED</h2>
-            <p>Passenger called to save the flight:</p>
-            <h1 id="selected-passenger">SYSTEM SELECTING...</h1>
-            <div class="modal-actions">
-                <button id="correct-btn" class="success-btn">Correct Answer (Saved!)</button>
-                <button id="wrong-btn" class="danger-btn">Incorrect Answer (-1 Life)</button>
+        <!-- Right Column: Action & Question Panel -->
+        <div id="action-panel" class="side-panel">
+            
+            <!-- Idle / Safe State -->
+            <div id="status-idle" class="panel-content">
+                <h2 style="color: var(--sand);">FLIGHT STATUS</h2>
+                <h1 style="color: var(--sky); font-size: 2.5rem; margin: 10px 0;">NORMAL</h1>
+                <p>Cruising altitude reached.<br>Awaiting turbulence events...</p>
             </div>
+
+            <!-- Emergency / Question State -->
+            <div id="status-emergency" class="panel-content hidden">
+                <h2 class="flashing-text">EMERGENCY PROTOCOL</h2>
+                <p>Passenger called to save the flight:</p>
+                
+                <h1 id="selected-passenger">SYSTEM SELECTING...</h1>
+                
+                <div class="modal-actions">
+                    <button id="correct-btn" class="success-btn">Correct (Saved!)</button>
+                    <button id="wrong-btn" class="danger-btn">Incorrect (-1)</button>
+                </div>
+            </div>
+
         </div>
     </div>
 

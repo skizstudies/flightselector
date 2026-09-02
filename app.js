@@ -4,16 +4,21 @@ class FlightGame {
         this.lives = 3;
         this.questionsLeft = 6;
 
+        // Audio
         this.audioBGM = document.getElementById('bgm');
         this.audioTurbulence = document.getElementById('sfx-turbulence');
         this.audioCorrect = document.getElementById('sfx-correct');
         this.audioWrong = document.getElementById('sfx-wrong');
         
-        this.dashboard = document.getElementById('flight-dashboard');
+        // DOM 
+        this.mainGame = document.getElementById('main-game');
         this.preFlight = document.getElementById('pre-flight');
         this.cabin = document.getElementById('cabin-rows');
         this.turbBtn = document.getElementById('turbulence-btn');
-        this.modal = document.getElementById('emergency-modal');
+        
+        // Side Panel States
+        this.statusIdle = document.getElementById('status-idle');
+        this.statusEmergency = document.getElementById('status-emergency');
         this.selectedDisplay = document.getElementById('selected-passenger');
         
         this.init();
@@ -59,7 +64,7 @@ class FlightGame {
     bindEvents() {
         document.getElementById('start-flight-btn').addEventListener('click', () => {
             this.preFlight.classList.add('hidden');
-            this.dashboard.classList.remove('hidden');
+            this.mainGame.classList.remove('hidden'); // Show the main game layout instead of just dashboard
             this.audioBGM.volume = 0.4;
             this.audioBGM.play(); // Starts the ambient airplane noise
         });
@@ -77,9 +82,13 @@ class FlightGame {
         this.audioTurbulence.currentTime = 0;
         this.audioTurbulence.play();
 
-        this.dashboard.classList.add('turbulence-active');
+        document.getElementById('flight-dashboard').classList.add('turbulence-active');
         document.body.classList.add('turbulence-overlay');
         this.turbBtn.disabled = true;
+
+        this.statusIdle.classList.add('hidden');
+        this.statusEmergency.classList.remove('hidden');
+        this.selectedDisplay.innerText = "SYSTEM SELECTING...";
 
         let cycle = setInterval(() => {
             document.querySelectorAll('.seat').forEach(s => s.classList.remove('selected'));
@@ -90,30 +99,24 @@ class FlightGame {
 
         setTimeout(() => {
             clearInterval(cycle);
-            this.dashboard.classList.remove('turbulence-active');
+            document.getElementById('flight-dashboard').classList.remove('turbulence-active');
             document.body.classList.remove('turbulence-overlay');
             
             const chosen = this.passengers[Math.floor(Math.random() * this.passengers.length)];
             document.querySelectorAll('.seat').forEach(s => s.classList.remove('selected'));
             document.getElementById(`seat-${chosen}`).classList.add('selected');
             
-            this.showModal(chosen);
+            this.selectedDisplay.innerText = chosen; // Display chosen name directly in the side panel
         }, 4000); // 4 seconds of turbulence buildup
     }
 
-    showModal(passenger) {
-        setTimeout(() => {
-            this.selectedDisplay.innerText = passenger;
-            this.modal.classList.remove('hidden');
-        }, 500);
-    }
-
     resolveQuestion(isCorrect) {
-        this.modal.classList.add('hidden');
+        this.statusEmergency.classList.add('hidden');
+        this.statusIdle.classList.remove('hidden');
         this.turbBtn.disabled = false;
         
         this.audioTurbulence.pause();
-        this.audioBGM.play(); // Resume ambient noise
+        this.audioBGM.play();
 
         if (isCorrect) {
             this.audioCorrect.currentTime = 0;
@@ -126,7 +129,7 @@ class FlightGame {
             this.questionsLeft--;
             
             let hearts = "❤️".repeat(this.lives) + "🖤".repeat(3 - this.lives);
-            document.getElementById('lives-display').innerText = `Lives: ${hearts}`;
+            document.getElementById('lives-display').innerText = hearts;
             
             if (this.lives === 0) {
                 setTimeout(() => alert("CRITICAL FAILURE. WE ARE GOING DOWN! (Game Over)"), 500);
