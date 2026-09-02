@@ -3,22 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flight Turbulence Simulator</title>
+    <title>Flight 2026 - Turbulence Event</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="flight-dashboard" class="dashboard">
+    <!-- Audio Assets -->
+    <audio id="bgm" src="flight-ambience.mp3" loop></audio>
+    <audio id="sfx-turbulence" src="airplane-turbulence.mp3"></audio>
+    <audio id="sfx-correct" src="chime-correct.mp3"></audio>
+    <audio id="sfx-wrong" src="buzzer-wrong.mp3"></audio>
+
+    <div id="pre-flight">
+        <button id="start-flight-btn" class="success-btn">BOARD FLIGHT (Enable Audio)</button>
+    </div>
+
+    <div id="flight-dashboard" class="dashboard hidden">
         <header>
-            <h1>FLIGHT MANIFEST // INDONESIA BOUND</h1>
+            <h1>Flight 10426 → IDN</h1>
             <div class="status-bar">
                 <span id="lives-display">Lives: ❤️❤️❤️</span>
                 <span id="questions-display">Questions Left: 6</span>
             </div>
         </header>
 
-        <div class="main-screen">
-            <div id="passenger-grid" class="grid">
-                <!-- Passenger names here via JS -->
+        <!-- Airplane Cabin Layout -->
+        <div class="airplane-body">
+            <div class="cockpit-door">COCKPIT</div>
+            <div id="cabin-rows" class="cabin">
+                <!-- Seats here via JS -->
             </div>
         </div>
 
@@ -34,8 +46,8 @@
             <p>Passenger called to save the flight:</p>
             <h1 id="selected-passenger">SYSTEM SELECTING...</h1>
             <div class="modal-actions">
-                <button id="correct-btn" class="success-btn">Answer Correct (Saved!)</button>
-                <button id="wrong-btn" class="danger-btn">Answer Wrong (-1 Life)</button>
+                <button id="correct-btn" class="success-btn">Correct Answer (Saved!)</button>
+                <button id="wrong-btn" class="danger-btn">Incorrect Answer (-1 Life)</button>
             </div>
         </div>
     </div>
