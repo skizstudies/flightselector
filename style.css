@@ -78,29 +78,37 @@ body::after {
     align-items: stretch;
 }
 
-/* LEFT: Dashboard */
 .dashboard {
-    flex: 1.2; 
-    background: linear-gradient(135deg, var(--ocean), var(--midnight));
-    border: 2px solid var(--sky);
+    flex: 1.2;
+    background: rgba(255, 255, 255, 0.65); 
+    backdrop-filter: blur(16px); 
+    -webkit-backdrop-filter: blur(16px); 
+    border: 2px solid rgba(255, 255, 255, 0.8); 
+    box-shadow: 0 15px 35px rgba(0, 48, 135, 0.15);
+    
     padding: 25px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: var(--midnight); 
 }
+
 .side-panel {
     flex: 0.8;
-    background: var(--ocean);
-    border: 3px solid var(--sun);
-    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 15px 35px rgba(0, 48, 135, 0.15);
+    
+    border-radius: 20px;
     padding: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    color: var(--midnight); 
 }
 
 header {
@@ -109,22 +117,35 @@ header {
 }
 
 h1 {
-    color: var(--sun);
+    color: var(--ocean); 
     margin-top: 0;
     font-size: 1.6rem;
     letter-spacing: 1px;
+    font-weight: 900;
 }
 
 .status-bar {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: var(--black);
+    background: var(--ocean); 
     padding: 12px;
-    border-radius: 8px;
+    border-radius: 12px;
     font-weight: bold;
-    color: var(--sand);
+    color: var(--white);
     font-size: 1.2rem;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+    width: 90%;
+}
+
+.side-panel h2 {
+    color: var(--ocean) !important;
+    font-weight: 800;
+}
+
+.side-panel p {
+    font-weight: 600;
+    color: var(--midnight);
 }
 
 /* --- THE CABIN UI --- */
