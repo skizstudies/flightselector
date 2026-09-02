@@ -99,7 +99,7 @@ body::after {
     background: rgba(255, 255, 255, 0.65);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
- 
+    border: 2px solid rgba(255, 255, 255, 0.8); 
     box-shadow: 0 15px 35px rgba(0, 48, 135, 0.15);
     
     border-radius: 20px;
