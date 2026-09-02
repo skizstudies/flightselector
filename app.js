@@ -64,9 +64,9 @@ class FlightGame {
     bindEvents() {
         document.getElementById('start-flight-btn').addEventListener('click', () => {
             this.preFlight.classList.add('hidden');
-            this.mainGame.classList.remove('hidden'); 
+            this.mainGame.classList.remove('hidden'); // Show the main game layout instead of just dashboard
             this.audioBGM.volume = 0.4;
-            this.audioBGM.play(); 
+            this.audioBGM.play(); // Starts the ambient airplane noise
         });
 
         this.turbBtn.addEventListener('click', () => this.triggerTurbulence());
@@ -100,7 +100,7 @@ class FlightGame {
 
         setTimeout(() => {
             clearInterval(cycle);
-
+            
             document.getElementById('flight-dashboard').classList.remove('turbulence-active');
             document.body.classList.remove('turbulence-overlay');
             
@@ -112,7 +112,15 @@ class FlightGame {
             document.getElementById(`seat-${chosen}`).classList.add('selected');
             
             this.selectedDisplay.innerText = chosen; 
-        }, 4800); 
+        }, 4800);
+    }
+
+    voidQuestion() {
+        this.statusEmergency.classList.add('hidden');
+        this.statusIdle.classList.remove('hidden');
+        this.turbBtn.disabled = false;
+
+        document.querySelectorAll('.seat').forEach(s => s.classList.remove('selected'));
     }
 
     resolveQuestion(isCorrect) {
@@ -147,14 +155,7 @@ class FlightGame {
             setTimeout(() => alert("CLEAR SKIES AHEAD! We have safely landed."), 500);
         }
     }
-
-    voidQuestion() {
-        this.statusEmergency.classList.add('hidden');
-        this.statusIdle.classList.remove('hidden');
-        this.turbBtn.disabled = false;
-
-        document.querySelectorAll('.seat').forEach(s => s.classList.remove('selected'));
-    }
+}
 
 const classRoster = [
     "Aicert", "Aldred", "Kate", "Czynon", "Vincent",
