@@ -286,6 +286,27 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 .flashing-text { color: var(--sun); animation: blink 1s infinite; }
 @keyframes blink { 50% { opacity: 0.4; } }
 
+#red-flash-overlay {
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100vw; 
+    height: 100vh;
+    background-color: var(--danger);
+    z-index: 0; 
+    pointer-events: none; 
+    opacity: 0; 
+}
+
+body.turbulence-overlay #red-flash-overlay {
+    animation: red-pulse 0.8s infinite alternate;
+}
+
+@keyframes red-pulse {
+    from { opacity: 0.1; }
+    to { opacity: 0.5; } 
+}
+
 /* Animations */
 .turbulence-active { animation: shake 0.4s infinite; }
 .turbulence-overlay { animation: red-flash 0.8s infinite alternate; }
