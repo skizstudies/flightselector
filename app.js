@@ -73,6 +73,7 @@ class FlightGame {
         
         document.getElementById('correct-btn').addEventListener('click', () => this.resolveQuestion(true));
         document.getElementById('wrong-btn').addEventListener('click', () => this.resolveQuestion(false));
+        document.getElementById('void-btn').addEventListener('click', () => this.voidQuestion());
     }
 
     triggerTurbulence() {
