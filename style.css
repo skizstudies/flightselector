@@ -78,6 +78,119 @@ body::after {
     align-items: center;
 }
 
+.ticket-container {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    background: transparent;
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.ticket {
+    background: var(--white);
+    width: 600px;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 48, 135, 0.3);
+    display: flex;
+    overflow: hidden;
+    color: var(--midnight);
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+.ticket-header, .ticket-body {
+    padding: 20px;
+}
+
+.ticket-header {
+    background: var(--ocean);
+    color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px dashed rgba(255,255,255,0.3);
+}
+
+.ticket-header h2 { margin: 0; color: var(--sun); }
+.ticket-header p { margin: 0; font-weight: bold; }
+
+.ticket-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.route {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.airport { text-align: center; }
+.airport h1 { font-size: 3.5rem; color: var(--ocean); margin: 0; }
+.airport span { font-weight: 800; color: #8d99ae; text-transform: uppercase; }
+
+.plane-icon { font-size: 2.5rem; color: var(--sun); }
+
+.ticket-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ticket-details div { display: flex; flex-direction: column; }
+.ticket-details small { color: #8d99ae; font-weight: 800; font-size: 0.8rem; }
+.ticket-details strong { font-size: 1.2rem; color: var(--midnight); }
+
+
+.ticket-stub {
+    background: var(--sun);
+    color: var(--midnight);
+    width: 150px;
+    border: none;
+    border-left: 3px dashed var(--ocean); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 0; 
+    transition: background 0.3s;
+}
+
+.ticket-stub:hover {
+    background: #ffbe28;
+    transform: none;
+}
+
+.barcode {
+    font-family: monospace; 
+    font-size: 1.5rem;
+    font-weight: bold;
+    transform: rotate(90deg);
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+}
+
+.ticket-stub span {
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.ticket-scanned {
+    transform: translateY(-100vh) !important; 
+    opacity: 0;
+}
+
 .dashboard {
     flex: 1.2;
     background: rgba(255, 255, 255, 0.65); 
