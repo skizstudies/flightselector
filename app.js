@@ -121,6 +121,17 @@ class FlightGame {
             document.getElementById(`seat-${chosen}`).classList.add('selected');
             
             this.selectedDisplay.innerText = chosen; 
+
+            const currentQ = recapQuestions[6 - this.questionsLeft];
+            
+            document.getElementById('question-text').innerText = currentQ.q;
+            const optionsHtml = currentQ.opts.map(opt => `<div>${opt}</div>`).join('');
+            document.getElementById('question-options').innerHTML = optionsHtml;
+
+            setTimeout(() => {
+                document.getElementById('window-shade').classList.add('open');
+            }, 800);
+
         }, 4800);
     }
 
@@ -130,6 +141,8 @@ class FlightGame {
         this.turbBtn.disabled = false;
 
         document.querySelectorAll('.seat').forEach(s => s.classList.remove('selected'));
+
+        document.getElementById('window-shade').classList.remove('open');
     }
 
     resolveQuestion(isCorrect) {
@@ -163,6 +176,8 @@ class FlightGame {
         if (this.questionsLeft === 0 && this.lives > 0) {
             setTimeout(() => alert("CLEAR SKIES AHEAD! We have safely landed."), 500);
         }
+
+        document.getElementById('window-shade').classList.remove('open');
     }
 }
 
